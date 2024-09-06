@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+    tools:context=".Activity.CourseHomeActivity"
+    tools:ignore="HardcodedText">
+
+
+    <ImageView
+        android:id="@+id/course_backBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/backbtn"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/topCorner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_tight" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="146dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottomCorner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topCorner"
+        app:layout_constraintVertical_bias="0.5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/courseIcon"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_margin="8dp"
+                android:contentDescription="Course Icon"
+                app:srcCompat="@drawable/osy" />
+
+
+            <TextView
+                android:id="@+id/courseNameView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_weight="0.75"
+                android:fontFamily="@font/source_sans_pro_bold"
+                android:text="Operating Systems"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/source_sans_pro"
+            android:text="Select one of the option to continue"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/CourseHomeOpt1"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/crs_btn_background_3"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/optImage1"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:contentDescription="1st Subject"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.29000002"
+                    app:srcCompat="@drawable/btn_1" />
+
+                <TextView
+                    android:id="@+id/courseOptText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/source_sans_pro_semibold"
+                    android:text="Unit Wise PYQ's"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/optImage1"
+                    app:layout_constraintStart_toStartOf="@+id/optImage1"
+                    app:layout_constraintTop_toBottomOf="@+id/optImage1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/CourseHomeOpt2"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="12dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/crs_btn_background_2"
+                android:baselineAligned="false"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/optImage2"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:contentDescription="2nd Subject"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.29000002"
+                    app:srcCompat="@drawable/btn_2" />
+
+                <TextView
+                    android:id="@+id/courseOptText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/source_sans_pro_semibold"
+                    android:text="Papers"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/optImage2"
+                    app:layout_constraintStart_toStartOf="@+id/optImage2"
+                    app:layout_constraintTop_toBottomOf="@+id/optImage2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/CourseHomeOpt3"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/crs_btn_background_1"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/optImage3"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:contentDescription="3rd Subject"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.29000002"
+                    app:srcCompat="@drawable/btn_3" />
+
+                <TextView
+                    android:id="@+id/courseOptText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/source_sans_pro_semibold"
+                    android:text="Notes"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/optImage3"
+                    app:layout_constraintStart_toStartOf="@+id/optImage3"
+                    app:layout_constraintTop_toBottomOf="@+id/optImage3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/CourseHomeOpt4"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="12dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/crs_btn_background_4"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/optImage4"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:contentDescription="4th Subject"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.29000002"
+                    app:srcCompat="@drawable/syllabus_icon" />
+
+                <TextView
+                    android:id="@+id/courseOptText4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/source_sans_pro_semibold"
+                    android:text="Syllabus \n and Manual"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/optImage4"
+                    app:layout_constraintStart_toStartOf="@+id/optImage4"
+                    app:layout_constraintTop_toBottomOf="@+id/optImage4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/bottomCorner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bottom_left" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

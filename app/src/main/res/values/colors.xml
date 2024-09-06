@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="brown">#543310</color>
+    <color name="light_brown">#74512D</color>
+    <color name="beige">#F8F4E1</color>
+    <color name="lighter_brown">#AF8F6F</color>
+    <color name="blue">#1F77F9</color>
+    <color name="btn_color">#167CC0</color>
+    <color name="btn_pressed_color">#FAF9F4</color>
+    <color name="btn_selected_color">#D08EE8</color>
+    <color name="blue_shade1">#3EB8F2</color>
+    <color name="red_shade1">#C8FE4155</color>
+    <color name="red_shade2">#FE4155</color>
+    <color name="btn_ripple_color">#FDF5E2</color>
+    <color name="bg_color">#161616</color>
+    <color name="dark_gray">#212121</color>
+    <color name="text_highlight1">#71EDEE</color>
+    <color name="sign_in_out_color">#3DBAF4</color>
+    <color name="sign_in_out_icon">#3DBAF4</color>
+    <color name="card_color">#212128</color>
+    <color name="hint_color">#94D8F7</color>
+</resources>

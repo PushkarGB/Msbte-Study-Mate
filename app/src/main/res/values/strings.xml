@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MSBTE Study Mate</string>
+    <string name="credit">PGBCreation</string>
+    <string name="emailHint">Email</string>
+    <string name="passwordHint">Password</string>
+    <string name="passwordLabel">Password :</string>
+    <string name="email_idLabel">Email-Id :</string>
+    <string name="Sign_inMsg">Sign in to continue</string>
+    <string name="createNewAccQue">Need an Account?</string>
+    <string name="login">Login</string>
+    <string name="title_line">Welcome to MSBTE Study Mate, Let\'s start our learning journey!</string>
+    <string name="sub_title_line">Empowering Your MSBTE Journey, One Question at a Time</string>
+    <string name="username_label">Username</string>
+    <string name="sign_in_btn">Sign In!</string>
+    <string name="re_enter_password_hint">Re-enter Password</string>
+    <string name="sign_up_btn">Sign Up</string>
+    <string name="already_have_an_account">Already have an Account?</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="abbreviationExtra">cAbbreviation</string>
+</resources>

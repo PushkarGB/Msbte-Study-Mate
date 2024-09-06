@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF6CD8F9"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Activity.WelcomeActivity"
+    tools:ignore="HardcodedText">
+
+    <ImageView
+        android:id="@+id/logoImg"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_marginTop="100dp"
+        android:contentDescription="logo"
+        android:src="@drawable/logo_main"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/source_sans_pro_bold"
+        android:gravity="center"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp"
+        android:text="@string/title_line"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/quote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_italic"
+        android:gravity="center"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp"
+        android:text="@string/sub_title_line"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/welcome_login"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:backgroundTint="#DCDFC5"
+            android:text="Sign In"
+            android:textColor="@color/black"
+            android:visibility="visible"
+            app:rippleColor="#FB841F" />
+
+        <Button
+            android:id="@+id/welcome_SignUp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FB841F"
+            android:text="Register"
+            android:textColor="@color/black"
+            android:visibility="visible"
+            app:rippleColor="#DCDFC5" />
+
+
+        <Button
+            android:id="@+id/welcome_logout"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:backgroundTint="#FB841F"
+            android:text=" Logout "
+            android:textColor="@color/black"
+            android:visibility="gone"
+            app:rippleColor="#DCDFC5" />
+
+        <Button
+            android:id="@+id/coninueBtn"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:backgroundTint="#DCDFC5"
+            android:text="Continue"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            app:rippleColor="#FB841F" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="from"
+        android:textAlignment="center"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="@string/credit"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+</LinearLayout>

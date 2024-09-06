@@ -1,0 +1,26 @@
+Event handling in java is done by using ________ model.,(a) Event delegation,(b) Event inheritance,(c) Event association,(d) Event aggregation,(a) Event delegation
+An event is generated when ________,(a) Mouse is clicked,(b) Key is pressed,(c) Button is pressed,(d) All of these,(d) All of these
+Which of these methods are used to register a listener for MouseEvent? ,(a) addMouseListener(),(b) addKeyListener(),(c) addActionListener(),(d) addComponentListener(),(a) addMouseListener()
+Which of these methods are used to register a listener for KeyEvent? ,(a) addMouseListener(),(b) addKeyListener(),(c) addActionListener(),(d) addComponentListener(),(b) addKeyListener()
+Which of these methods are used to register a listener for ActionEvent? ,(a) addMouseListener(),(b) addKeyListener(),(c) addActionListener(),(d) addComponentListener(),(c) addActionListener()
+Which of these methods are used to register a listener for ComponentEvent? ,(a) addMouseListener(),(b) addKeyListener(),(c) addActionListener(),(d) addComponentListener(),(d) addComponentListener()
+Which of these is the super class of all event classes?,(a) EventObject,(b) EventClass,(c) EventListener,(d) EventHandler,(a) EventObject
+Which of these is the super class of all event listener interfaces?,(a) EventObject,(b) EventClass,(c) EventListener,(d) EventHandler,(c) EventListener
+Which of these methods are used to unregister a listener for MouseEvent?,(a) removeMouseListener(),(b) removeKeyListener(),(c) removeActionListener(),(d) removeComponentListener(),(a) removeMouseListener()
+Which of these methods are used to unregister a listener for KeyEvent?,(a) removeMouseListener(),(b) removeKeyListener(),(c) removeActionListener(),(d) removeComponentListener(),(b) removeKeyListener()
+Which of these methods are used to unregister a listener for ActionEvent?,(a) removeMouseListener(),(b) removeKeyListener(),(c) removeActionListener(),(d) removeComponentListener(),(c) removeActionListener()
+Which of these methods are used to unregister a listener for ComponentEvent?,(a) removeMouseListener(),(b) removeKeyListener(),(c) removeActionListener(),(d) removeComponentListener(),(d) removeComponentListener()
+Which of these methods are used to get the source of an event?,(a) getSource(),(b) getEventSource(),(c) getEventObject(),(d) getEventListener(),(a) getSource()
+Which of these methods are used to get the id of an event?,(a) getId(),(b) getEventId(),(c) getEventObjectId(),(d) getEventListenerId(),(a) getId()
+Which of these methods are used to get the timestamp of an event?,(a) getWhen(),(b) getEventWhen(),(c) getEventObjectWhen(),(d) getEventListenerWhen(),(a) getWhen()
+Which of these methods are used to get the command name of an event?,(a) getActionCommand(),(b) getCommand(),(c) getEventCommand(),(d) getEventListenerCommand(),(a) getActionCommand()
+Which of these methods are used to get the modifiers of an event?,(a) getModifiers(),(b) getEventModifiers(),(c) getEventObjectModifiers(),(d) getEventListenerModifiers(),(a) getModifiers()
+Which of these methods are used to get the new state of an event?,(a) getNewState(),(b) getEventNewState(),(c) getEventObjectNewState(),(d) getEventListenerNewState(),(a) getNewState()
+Which of these methods are used to get the old state of an event?,(a) getOldState(),(b) getEventOldState(),(c) getEventObjectOldState(),(d) getEventListenerOldState(),(a) getOldState()
+Which of these methods are used to get the source of an event?,(a) getSource(),(b) getEventSource(),(c) getEventObject(),(d) getEventListener(),(a) getSource()
+Which of these methods are used to get the id of an event?,(a) getId(),(b) getEventId(),(c) getEventObjectId(),(d) getEventListenerId(),(a) getId()
+Which of these methods are used to get the timestamp of an event?,(a) getWhen(),(b) getEventWhen(),(c) getEventObjectWhen(),(d) getEventListenerWhen(),(a) getWhen()
+Which of these methods are used to get the command name of an event?,(a) getActionCommand(),(b) getCommand(),(c) getEventCommand(),(d) getEventListenerCommand(),(a) getActionCommand()
+Which of these methods are used to get the modifiers of an event?,(a) getModifiers(),(b) getEventModifiers(),(c) getEventObjectModifiers(),(d) getEventListenerModifiers(),(a) getModifiers()
+Which of these methods are used to get the new state of an event?,(a) getNewState(),(b) getEventNewState(),(c) getEventObjectNewState(),(d) getEventListenerNewState(),(a) getNewState()
+Which of these methods are used to get the old state of an event?,(a) getOldState(),(b) getEventOldState(),(c) getEventObjectOldState(),(d) getEventListenerOldState(),(a) getOldState()

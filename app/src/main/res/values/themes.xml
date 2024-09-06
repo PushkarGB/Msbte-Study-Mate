@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.QuizApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">#45C0F7</item>
+        <item name="colorOnPrimaryFixed">#4CD4D9</item>
+        <item name="colorPrimaryDark">#1C95C6</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="colorSecondary">#FA9D26</item>>
+        <item name="textInputStyle">@style/Widget.App.TextInputLayout.OutlinedBox.SpecificColor
+        </item>
+    </style>
+
+    <style name="Theme.App" parent="Base.Theme.QuizApp" />
+
+    <style name="AppTheme.SpecificActivity" parent="Theme.App">
+        <item name="textInputStyle">@style/Widget.App.TextInputLayout.OutlinedBox.SpecificColor
+        </item>
+    </style>
+
+    <style name="Widget.App.TextInputLayout.OutlinedBox.SpecificColor" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/btn_color</item>
+    </style>
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/bg_color</item>
+        <item name="postSplashScreenTheme">@style/Theme.App</item>
+        <item name="windowSplashScreenAnimationDuration">4000</item>
+    </style>
+
+    <!--    <style name="AppTheme.NoSystemSplash" parent="Theme.AppCompat.Light.NoActionBar">-->
+    <!--        <item name="android:windowDisablePreview">true</item>-->
+    <!--        &lt;!&ndash; Other theme attributes &ndash;&gt;-->
+    <!--    </style>-->
+    <!--    <style name="Theme.App.Starting" parent="Theme.SplashScreen">-->
+    <!--        <item name="windowSplashScreenBackground">#F2F2F2</item>-->
+    <!--        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_screen_title</item>-->
+    <!--        <item name="windowSplashScreenAnimationDuration">1000</item>-->
+    <!--        <item name="postSplashScreenTheme">@style/Theme.QuizApp</item>-->
+    <!--    </style>-->
+
+</resources>
