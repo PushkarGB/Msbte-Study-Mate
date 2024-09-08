@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText rg_username, rg_email, rg_pass, rg_rePass;
     TextView rg_login;
     CircleImageView profileImage;
+    ProgressBar progressBar;
 
     //Database References
     FirebaseAuth auth; //authorization
@@ -77,6 +79,7 @@ public class RegistrationActivity extends AppCompatActivity {
         rg_rePass = findViewById(R.id.reenterPass);
         rg_login = findViewById(R.id.redirectToSignIn);
         profileImage = findViewById(R.id.regProfile);
+        progressBar = findViewById(R.id.progressBar);
 
         //Redirect to Login Activity if user clicks on Sign In!
 
@@ -141,6 +144,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     //If everything is correct , Then we will create a user
                     //and add a after its completion store data in database
+
+                    progressBar.setVisibility(View.VISIBLE);
 
                     auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
