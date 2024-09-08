@@ -1,18 +1,23 @@
 package com.example.quizapp.Domain;
 
 public class Users {
-    String userId,userName,profilePic,mail,password,cPassword,status;
+    String userId;
+    String userName;
+    String profilePic;
+    String email;
+    String password;
+    String rePassword;
+
     public Users(){
     }
 
-    public Users(String id, String name, String imageUriStr, String email, String pass, String rePass, String status) {
+    public Users(String id, String userName, String profilePic, String email, String password, String rePassword) {
         this.userId = id;
-        this.userName = name;
-        this.profilePic = imageUriStr;
-        this.mail = email;
-        this.password = pass;
-        this.cPassword = rePass;
-        this.status = status;
+        this.userName = userName;
+        this.profilePic = profilePic;
+        this.email = email;
+        this.password = password;
+        this.rePassword = rePassword;
     }
 
     public String getUserId() {
@@ -22,6 +27,7 @@ public class Users {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
 
     public String getUserName() {
         return userName;
@@ -39,12 +45,12 @@ public class Users {
         this.profilePic = profilePic;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String mail) {
+        this.email = mail;
     }
 
     public String getPassword() {
@@ -55,19 +61,12 @@ public class Users {
         this.password = password;
     }
 
-    public String getcPassword() {
-        return cPassword;
+    public String getRePassword() {
+        return rePassword;
     }
 
-    public void setcPassword(String cPassword) {
-        this.cPassword = cPassword;
+    public void setRePassword(String rePassword) {
+        this.rePassword = rePassword;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }
