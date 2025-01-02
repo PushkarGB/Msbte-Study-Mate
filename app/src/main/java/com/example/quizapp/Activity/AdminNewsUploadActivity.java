@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -26,13 +27,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 
 public class AdminNewsUploadActivity extends AppCompatActivity {
 
-    private EditText titleEditText, dateEditText, contentEditText;
+    private EditText titleEditText, contentEditText;
+    private DatePicker dateEditText;
     private ImageView thumbnailImageView;
     private Button uploadButton, selectDocumentButton;
 
@@ -115,11 +115,11 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
 
     private void uploadNewsArticle() {
         String title = titleEditText.getText().toString();
-        String date = dateEditText.getText().toString();
+        String date = dateEditText.getYear() + "/" + (dateEditText.getMonth() + 1) + "/" + dateEditText.getDayOfMonth();
         String content = contentEditText.getText().toString();
 
-        if (title.isEmpty() || date.isEmpty() || content.isEmpty() || thumbnailUri == null || documentUri == null) {
-            Toast.makeText(this, "Please fill all fields and select files.", Toast.LENGTH_SHORT).show();
+        if (title.isEmpty() || content.isEmpty() || thumbnailUri == null) {
+            Toast.makeText(this, "Please fill all fields and select a thumbnail.", Toast.LENGTH_SHORT).show();
             return;
         }
 
