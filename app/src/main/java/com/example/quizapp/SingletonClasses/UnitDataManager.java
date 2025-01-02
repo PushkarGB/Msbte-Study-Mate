@@ -1,6 +1,6 @@
 package com.example.quizapp.SingletonClasses;
 
-import com.example.quizapp.Domain.Units;
+import com.example.quizapp.Model.Units;
 
 import java.util.ArrayList;
 import java.util.HashMap;

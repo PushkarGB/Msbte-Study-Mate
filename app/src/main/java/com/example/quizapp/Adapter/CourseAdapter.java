@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.quizapp.Activity.CourseHomeActivity;
-import com.example.quizapp.Domain.CourseDomain;
+import com.example.quizapp.Model.CourseDomain;
 import com.example.quizapp.R;
 
 import java.util.ArrayList;

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quizapp.Adapter.CourseAdapter;
-import com.example.quizapp.Domain.CourseDomain;
+import com.example.quizapp.Model.CourseDomain;
 import com.example.quizapp.R;
 import com.example.quizapp.SingletonClasses.CourseDataManager;
 
