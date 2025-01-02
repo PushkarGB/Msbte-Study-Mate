@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="16dp"
-    android:background="@color/beige"
+    android:background="@drawable/gradient2"
     android:orientation="vertical"
     tools:context=".Activity.AdminNewsUploadActivity">
 
@@ -13,33 +14,44 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bungee"
+            android:text="Upload News Article"
+            android:textColor="@color/black"
+            android:textSize="34sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/titleEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Title"
-            android:textColor="@color/black"
             android:inputType="text"
-            android:padding="12dp" />
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/beige" />
 
-        <EditText
+        <DatePicker
             android:id="@+id/dateEditText"
+            style="@android:style/Widget.DatePicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date (DD/MM/YYYY)"
-            android:inputType="date"
-            android:padding="12dp"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            android:calendarViewShown="false"
+            android:padding="12dp" />
 
         <EditText
             android:id="@+id/contentEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:hint="Content"
             android:inputType="textMultiLine"
             android:lines="5"
             android:padding="12dp"
-            android:layout_marginTop="8dp" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/beige" />
 
         <ImageView
             android:id="@+id/thumbnailImageView"
@@ -54,15 +66,23 @@
             android:id="@+id/selectDocumentButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/btn_selected_color"
             android:text="Select Document"
-            android:layout_marginTop="8dp" />
+            android:textSize="16sp"
+            app:iconSize="20dp"
+            app:rippleColor="@color/btn_ripple_color" />
 
         <Button
             android:id="@+id/uploadButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/btn_selected_color"
             android:text="Upload News Article"
-            android:layout_marginTop="16dp" />
+            android:textSize="16sp"
+            app:iconSize="20dp"
+            app:rippleColor="@color/btn_ripple_color" />
 
     </LinearLayout>
 </ScrollView>
