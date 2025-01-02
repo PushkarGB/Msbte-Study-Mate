@@ -33,9 +33,6 @@
             android:name=".Activity.CoursesListActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.ResultActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activity.QuizActivity"
             android:exported="false" />
         <activity
