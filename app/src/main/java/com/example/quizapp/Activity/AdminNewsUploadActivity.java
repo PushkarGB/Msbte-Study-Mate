@@ -5,12 +5,15 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -45,6 +48,8 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_news_upload);
+        EdgeToEdge.enable(this);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         titleEditText = findViewById(R.id.titleEditText);
         dateEditText = findViewById(R.id.dateEditText);
@@ -160,6 +165,7 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
                                                                     Toast.makeText(AdminNewsUploadActivity.this, "News Article Uploaded Successfully", Toast.LENGTH_SHORT).show();
                                                                     finish();
                                                                 } else {
+                                                                    Log.e("FirebaseError", task.getException().getMessage() + " ");
                                                                     Toast.makeText(AdminNewsUploadActivity.this, "Failed to upload news article.", Toast.LENGTH_SHORT).show();
                                                                 }
                                                             }
