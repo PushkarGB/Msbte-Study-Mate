@@ -24,10 +24,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="24dp">
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/home_header_bg">
 
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profileImg"
                     android:layout_width="74dp"
                     android:layout_height="74dp"
@@ -35,27 +36,30 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/user_1" />
+                    tools:src="@drawable/user_1" />
 
                 <TextView
                     android:id="@+id/greetUserText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
                     android:fontFamily="@font/source_sans_pro_bold"
-                    android:text="Hi , Pushkar"
+                    android:text="Hi , User"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView3"
                     app:layout_constraintStart_toEndOf="@+id/profileImg"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_marginBottom="12dp"
                     android:contentDescription="logout"
                     android:onClick="logout"

@@ -10,7 +10,6 @@
     android:padding="20dp"
     tools:context=".Activity.RegistrationActivity">
 
-
     <TextView
         android:id="@+id/logo_name"
         android:layout_width="wrap_content"
@@ -74,6 +73,15 @@
                 android:inputType="text|textEmailAddress"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/white"
+            android:visibility="gone"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordR"

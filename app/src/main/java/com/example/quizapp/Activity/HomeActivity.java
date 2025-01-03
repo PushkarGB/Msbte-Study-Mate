@@ -2,6 +2,10 @@ package com.example.quizapp.Activity;
 
 import static com.example.quizapp.Activity.CourseHomeActivity.COURSE_ABBREVIATION_EXTRA;
 import static com.example.quizapp.Activity.CourseHomeActivity.COURSE_NAME_EXTRA;
+import static com.example.quizapp.Activity.CourseHomeActivity.COURSE_TYPE_EXTRA;
+import static com.example.quizapp.SingletonClasses.CourseDataManager.TYPE_MCQ;
+import static com.example.quizapp.SingletonClasses.CourseDataManager.TYPE_PR;
+import static com.example.quizapp.SingletonClasses.CourseDataManager.TYPE_THEORY;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -21,12 +25,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.AnimationTypes;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.quizapp.Model.News;
 import com.example.quizapp.R;
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,7 +41,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -48,10 +63,14 @@ public class HomeActivity extends AppCompatActivity {
 
     ImageSlider imageSlider;
     FirebaseAuth auth;
+    FirebaseDatabase database;
     DatabaseReference newsRef;
     Boolean doubleTap = false;
     ArrayList<News> newsList;
 
+
+    TextView tv_userName;
+    CircleImageView civ_profileImage;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -69,6 +88,9 @@ public class HomeActivity extends AppCompatActivity {
         imageSlider = findViewById(R.id.image_slider);
 
         auth = FirebaseAuth.getInstance();
+
+
+        loadUserData();
 
         View.OnClickListener subClickListener = new View.OnClickListener() {
             @Override
@@ -215,6 +237,36 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    private void loadUserData() {
+
+        tv_userName = findViewById(R.id.greetUserText);
+        civ_profileImage = findViewById(R.id.profileImg);
+        String uid = auth.getUid();
+        //read user data from real-time db and show on screen
+
+        //sabse pehle apn lenge realtime ka refeernce
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("users").child(uid);
+        userReference.orderByChild(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String name = snapshot.child("userName").getValue(String.class);
+                    tv_userName.setText("Hey, "+ name);
+                    String imgUrl = snapshot.child("profilePic").getValue(String.class);
+                    if(imgUrl != null){
+                        Glide.with(HomeActivity.this).load(imgUrl).into(civ_profileImage);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("SignUp","Something went wrong in fetching user data");
+            }
+        });
+
+    }
+
     public void logout(View view) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("Logout?");
@@ -234,9 +286,5 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
             }
         }).create().show();
-    }
-
-    public void clicked(View view) {
-        Toast.makeText(this, "Home was clicked", Toast.LENGTH_SHORT).show();
     }
 }
