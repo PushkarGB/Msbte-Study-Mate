@@ -7,6 +7,22 @@
     android:background="@drawable/gradient_bg"
     tools:context=".Activity.ResultFragement">
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/exitButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="#00000000"
+        android:gravity="center"
+        android:text="Go back to Home"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:fontFamily="@font/source_sans_pro_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restartButton" />
+
     <ImageView
         android:id="@+id/lottieAnimationView"
         android:layout_width="150dp"
@@ -220,18 +236,18 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/resButton"
+        android:id="@+id/solutionButton"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
-        android:background="#00000000"
+        android:layout_marginTop="80dp"
+        android:background="@color/btn_selected_color"
         android:gravity="center"
-        android:text="Go back to Home"
+        android:text="Solution"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:fontFamily="@font/source_sans_pro_bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/restartButton" />
 
