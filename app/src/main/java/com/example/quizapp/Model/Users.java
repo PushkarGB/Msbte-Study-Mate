@@ -1,4 +1,4 @@
-package com.example.quizapp.Domain;
+package com.example.quizapp.Model;
 
 public class Users {
     String userId,userName,profilePic,mail,password,cPassword,status;

@@ -24,7 +24,7 @@ import com.bumptech.glide.Glide;
 import com.example.quizapp.Activity.PdfViewActivity;
 import com.example.quizapp.Activity.QuizActivity;
 import com.example.quizapp.SingletonClasses.PdfDataManager;
-import com.example.quizapp.Domain.Units;
+import com.example.quizapp.Model.Units;
 import com.example.quizapp.R;
 
 import java.util.ArrayList;

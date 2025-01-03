@@ -30,8 +30,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
 
@@ -52,7 +52,7 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(libs.circleimageview)
-    implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
+    implementation(libs.imageslideshow)
     implementation(libs.core.splashscreen)
     implementation(libs.glide);
     implementation(libs.lottie);
