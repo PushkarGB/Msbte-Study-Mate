@@ -31,7 +31,9 @@ import com.denzcoskun.imageslider.constants.AnimationTypes;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.quizapp.Model.News;
 import com.example.quizapp.R;
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +41,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -54,9 +61,13 @@ public class HomeActivity extends AppCompatActivity {
     ConstraintLayout sub1, sub2, sub3, sub4;
     TextView showCourseList;
 
+    ImageSlider imageSlider;
     FirebaseAuth auth;
     FirebaseDatabase database;
+    DatabaseReference newsRef;
     Boolean doubleTap = false;
+    ArrayList<News> newsList;
+
 
     TextView tv_userName;
     CircleImageView civ_profileImage;
@@ -74,9 +85,10 @@ public class HomeActivity extends AppCompatActivity {
         sub3 = findViewById(R.id.ETI);
         sub4 = findViewById(R.id.MGT);
         showCourseList = findViewById(R.id.courseListBtn);
+        imageSlider = findViewById(R.id.image_slider);
 
         auth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
+
 
         loadUserData();
 
@@ -145,49 +157,85 @@ public class HomeActivity extends AppCompatActivity {
         // Add the callback to the OnBackPressedDispatcher
         getOnBackPressedDispatcher().addCallback(this, callback);
 
-        ArrayList<SlideModel> imageList = new ArrayList<SlideModel>();// Create image list
+        setupImageSlider();
+    }
 
-// imageList.add(SlideModel("String Url" or R.drawable)
-// imageList.add(SlideModel("String Url" or R.drawable, "title") You can add title
+    public void setupImageSlider() {
+        imageSlider.setImageList(new ArrayList<SlideModel>(), ScaleTypes.FIT);
+        newsList = new ArrayList<>();
+        newsRef = FirebaseDatabase.getInstance().getReference("News");
 
-        imageList.add(new SlideModel(R.drawable.osy, "Operating Systems",null));
-        imageList.add(new SlideModel(R.drawable.css, "Client Side Scripting",null));
-        imageList.add(new SlideModel(R.drawable.ste, "Software Testing",null));
-
-        ImageSlider imageSlider = findViewById(R.id.image_slider);
-        imageSlider.setImageList(imageList);
-        imageSlider.setSlideAnimation(AnimationTypes.ZOOM_OUT);
-        imageSlider.setItemClickListener(new ItemClickListener() {
+        newsRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onItemSelected(int i) {
-
-            }
-            @Override
-            public void doubleClick(int i) {
-                Intent intent = new Intent(HomeActivity.this, CourseHomeActivity.class);
-                switch (i) {
-                    case 0:
-                        intent.putExtra(COURSE_NAME_EXTRA, imageList.get(0).getTitle());
-                        intent.putExtra(COURSE_ABBREVIATION_EXTRA, "osy");
-                        intent.putExtra(COURSE_TYPE_EXTRA, TYPE_THEORY);
-                    case 1:
-                        intent.putExtra(COURSE_NAME_EXTRA, imageList.get(0).getTitle());
-                        intent.putExtra(COURSE_ABBREVIATION_EXTRA, "ste");
-                        intent.putExtra(COURSE_TYPE_EXTRA, TYPE_THEORY);
-                    case 2:
-                        intent.putExtra(COURSE_NAME_EXTRA, imageList.get(0).getTitle());
-                        intent.putExtra(COURSE_ABBREVIATION_EXTRA, "css");
-                        intent.putExtra(COURSE_TYPE_EXTRA, TYPE_THEORY);
-                    case 3:
-                        intent.putExtra(COURSE_NAME_EXTRA, imageList.get(0).getTitle());
-                        intent.putExtra(COURSE_ABBREVIATION_EXTRA, "ajp");
-                        intent.putExtra(COURSE_TYPE_EXTRA, TYPE_MCQ);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                newsList.clear(); // Clear the list before adding new data
+                ArrayList<SlideModel> slideModels = new ArrayList<>();
+                int index = 0;
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    News news = data.getValue(News.class);
+                    if (news != null) {
+                        newsList.add(news); // Add the News object to the list
+                        slideModels.add(new SlideModel(news.getThumbnailUrl(), news.getTitle(), ScaleTypes.FIT));
+                    }
                 }
-                startActivity(intent);
+                imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+
+                // Add a click listener to handle double-tap
+                imageSlider.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void doubleClick(int position) {
+                        onNewsItemDoubleClick(position);
+                    }
+
+                    @Override
+                    public void onItemSelected(int position) {
+                        // Handle single click if needed
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(HomeActivity.this, "Failed to load news: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
+
+    /**
+     * Handles a double-click event on a news item.
+     *
+     * @param position The position of the clicked item in the image slider.
+     */
+    public void onNewsItemDoubleClick(int position) {
+        // Check if the position is valid.
+        if (position < 0 || position >= newsList.size()) {
+            Log.e("NewsError", "onNewsItemDoubleClick: Invalid position: " + position);
+            return;
+        }
+
+        // Get the selected news item from the list.
+        News selectedNews = newsList.get(position);
+
+        // Check if the news item is valid.
+        if (selectedNews == null) {
+            Log.e("NewsError", "onNewsItemDoubleClick: Failed to retrieve news data at position: " + position);
+            return;
+        }
+
+        // Create an intent to start the NewsDetailActivity.
+        Intent intent = new Intent(HomeActivity.this, NewsDetailActivity.class);
+
+        // Add news details as extras to the intent.
+        intent.putExtra(NewsDetailActivity.EXTRA_NEWS_TITLE, selectedNews.getTitle());
+        intent.putExtra(NewsDetailActivity.EXTRA_NEWS_DATE, selectedNews.getDate());
+        intent.putExtra(NewsDetailActivity.EXTRA_NEWS_DESCRIPTION, selectedNews.getContent());
+        intent.putExtra(NewsDetailActivity.EXTRA_NEWS_IMAGE_URL, selectedNews.getThumbnailUrl());
+        intent.putExtra(NewsDetailActivity.EXTRA_NEWS_ARTICLE_URL, selectedNews.getDocumentUrl());
+
+        // Start the NewsDetailActivity.
+        startActivity(intent);
+    }
+
 
     private void loadUserData() {
 
@@ -197,7 +245,7 @@ public class HomeActivity extends AppCompatActivity {
         //read user data from real-time db and show on screen
 
         //sabse pehle apn lenge realtime ka refeernce
-        DatabaseReference userReference = database.getReference("users").child(uid);
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("users").child(uid);
         userReference.orderByChild(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

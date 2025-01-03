@@ -15,6 +15,9 @@
         android:theme="@style/Theme.App"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.AdminNewsUploadActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.PdfViewActivity"
             android:exported="false" />
         <activity
@@ -28,9 +31,6 @@
             android:exported="false" />
         <activity
             android:name=".Activity.CoursesListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.ResultActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.QuizActivity"

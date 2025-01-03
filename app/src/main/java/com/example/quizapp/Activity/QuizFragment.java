@@ -1,11 +1,9 @@
 package com.example.quizapp.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
@@ -17,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.quizapp.Domain.Question;
+import com.example.quizapp.Model.Question;
 import com.example.quizapp.R;
 
 import java.io.BufferedReader;

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quizapp.Adapter.UnitAdapter;
-import com.example.quizapp.Domain.Units;
+import com.example.quizapp.Model.Units;
 import com.example.quizapp.R;
 import com.example.quizapp.SingletonClasses.UnitDataManager;
 
