@@ -38,8 +38,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:calendarTextColor="@color/black"
             android:calendarViewShown="false"
-            android:padding="12dp" />
+            android:padding="12dp"
+            android:yearListSelectorColor="@color/black" />
 
         <EditText
             android:id="@+id/contentEditText"
