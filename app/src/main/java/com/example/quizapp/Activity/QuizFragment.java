@@ -25,6 +25,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import com.example.quizapp.Activity.ResultFragement;
+
 
 
 public class QuizFragment extends Fragment {
@@ -51,6 +53,7 @@ public class QuizFragment extends Fragment {
     private List<String> selectedOptionsList;
 
     private String course, unit;
+    private Boolean solutionMode = false;
 
 
     public QuizFragment() {
@@ -62,6 +65,12 @@ public class QuizFragment extends Fragment {
         this.unit = unit;
     }
 
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,84 +100,115 @@ public class QuizFragment extends Fragment {
 
         //load questions based on subject and chapter in the list
         loadQuestions(course, unit);
+
         if (questions == null) {
             getActivity().finish();
         } else {
 
-        totalQ.setText(String.valueOf(questions.size()));
+            if (savedInstanceState != null) {
+                currentQuestionIndex = savedInstanceState.getInt("currentQuestionIndex", 0);
+                attemptedQuestions = (List<Boolean>) savedInstanceState.getSerializable("attemptedQuestions");
+                selectedOptionsList = savedInstanceState.getStringArrayList("selectedOptionsList");
+            } else {
+                attemptedQuestions = new ArrayList<>();
+                selectedOptionsList = new ArrayList<>();
+                for (int i = 0; i < questions.size(); i++) {
+                    attemptedQuestions.add(false);
+                    selectedOptionsList.add(null);
+                }
+            }
 
-        //initialize the lists
-        attemptedQuestions = new ArrayList<>();
-        selectedOptionsList = new ArrayList<>();
+            Bundle args = getArguments();
+            if (args != null) {
+                solutionMode = args.getBoolean("solutionMode", false);
+                if (solutionMode) {
+                    selectedOptionsList = args.getStringArrayList("selectedOptionsList");
+                }
+            }
 
-        //mark all questions as not attempted and no option selected
+            totalQ.setText(String.valueOf(questions.size()));
 
-        for (int i = 0; i < questions.size(); i++) {
-            attemptedQuestions.add(false); //no question attempted
-            selectedOptionsList.add(null); //no option selected
+            showQuestion(currentQuestionIndex);
+
+            //creating a OnClickListener object
+            View.OnClickListener optionClickListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (solutionMode) return;
+                    TextView selectedButton = (TextView) v;
+                    String selectedOption = selectedButton.getText().toString();
+                    selectOption(selectedOption);
+
+                    if (currentQuestionIndex < questions.size() - 1) {
+                        currentQuestionIndex++;
+                        showQuestion(currentQuestionIndex);
+                    } else {
+                        Toast.makeText(getContext(), "Quiz completed! Click On Finish for results", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            };
+
+            //setting onClickListener to the buttons
+
+            optionBtn1.setOnClickListener(optionClickListener);
+            optionBtn2.setOnClickListener(optionClickListener);
+            optionBtn3.setOnClickListener(optionClickListener);
+            optionBtn4.setOnClickListener(optionClickListener);
+
+            //Going to next question
+            nextBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (currentQuestionIndex < questions.size() - 1) {
+                        currentQuestionIndex++;
+                        showQuestion(currentQuestionIndex);
+                    } else {
+                        Toast.makeText(getContext(), "No more questions", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            //Going to previous question
+            prevBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (currentQuestionIndex > 0) {
+                        currentQuestionIndex--;
+                        showQuestion(currentQuestionIndex);
+                    }
+                }
+            });
+
+            //Going to Result Page
+            finishBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(solutionMode){
+                        getActivity().finish();
+                    }
+                    showResult();
+                }
+            });
+        }
+    }
+
+    private void highlightCorrectOption(int currentQuestionIndex, String answer) {
+        TextView correctOption = null;
+        if (answer.equals(optionBtn1.getText().toString())) {
+            correctOption = optionBtn1;
+        } else if (answer.equals(optionBtn2.getText().toString())) {
+            correctOption = optionBtn2;
+        } else if (answer.equals(optionBtn3.getText().toString())) {
+            correctOption = optionBtn3;
+        } else if (answer.equals(optionBtn4.getText().toString())) {
+            correctOption = optionBtn4;
         }
 
-        showQuestion(currentQuestionIndex);
+        if (correctOption != null) {
+            correctOption.setBackgroundResource(R.color.correct_color);
+        }
 
-        //creating a OnClickListener object
-        View.OnClickListener optionClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView selectedButton = (TextView) v;
-                String selectedOption = selectedButton.getText().toString();
-                selectOption(selectedOption);
-
-                if (currentQuestionIndex < questions.size() - 1) {
-                    currentQuestionIndex++;
-                    showQuestion(currentQuestionIndex);
-                } else {
-                    Toast.makeText(getContext(), "Quiz completed! Click On Finish for results", Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
-
-        //setting onClickListener to the buttons
-
-        optionBtn1.setOnClickListener(optionClickListener);
-        optionBtn2.setOnClickListener(optionClickListener);
-        optionBtn3.setOnClickListener(optionClickListener);
-        optionBtn4.setOnClickListener(optionClickListener);
-
-        //add a listener on questionText so that it's textSize becomes smaller when a question's length is too long to be accomdated in the textview that is if it overflows
-
-
-        //Going to next question
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentQuestionIndex < questions.size() - 1) {
-                    currentQuestionIndex++;
-                    showQuestion(currentQuestionIndex);
-                } else {
-                    Toast.makeText(getContext(), "No more questions", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        //Going to previous question
-        prevBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentQuestionIndex > 0) {
-                    currentQuestionIndex--;
-                    showQuestion(currentQuestionIndex);
-                }
-            }
-        });
-
-        //Going to Result Page
-        finishBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showResult();
-            }
-        });
-    }
     }
 
     //display the current question
@@ -197,6 +237,10 @@ public class QuizFragment extends Fragment {
             } else if (selectedOptionsList.get(currentQuestionIndex).equals(optionBtn4.getText().toString())) {
                 optionBtn4.setBackgroundResource(R.color.btn_selected_color);
             }
+        }
+
+        if (solutionMode) {
+            highlightCorrectOption(currentQuestionIndex, question.getAnswer());
         }
     }
 
@@ -246,7 +290,17 @@ public class QuizFragment extends Fragment {
 
     private void showResult() {
         calculateScore();
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ResultFragement(score, (int) attemptedQuestions.stream().filter(Boolean::booleanValue).count(),questions.size() ,course,unit)).commit();
+        Bundle args = new Bundle();
+        args.putInt("score", score);
+        args.putInt("attempts", (int) attemptedQuestions.stream().filter(Boolean::booleanValue).count());
+        args.putInt("totalQuestions", questions.size());
+        args.putString("course", course);
+        args.putString("unit", unit);
+        args.putStringArrayList("selectedOptions", new ArrayList<>(selectedOptionsList));
+
+        ResultFragement resultFragment = new ResultFragement();
+        resultFragment.setArguments(args);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, resultFragment).commit();
     }
 
     private void calculateScore() {
@@ -277,4 +331,13 @@ public class QuizFragment extends Fragment {
         };
         countDownTimer.start();
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+    }
 }
+
