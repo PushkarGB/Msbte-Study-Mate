@@ -2,6 +2,7 @@ package com.example.quizapp.Activity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,6 +45,8 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
     private StorageReference storageReference;
 
     private ProgressDialog progressDialog;
+    private ActivityResultLauncher<Intent> selectImageLauncher;
+    private ActivityResultLauncher<Intent> selectDocumentLauncher;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -62,6 +67,35 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference("NewsUploads");
 
         progressDialog = new ProgressDialog(this);
+
+        // Initialize ActivityResultLaunchers
+        selectImageLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        thumbnailUri = result.getData().getData();
+                        if (thumbnailUri != null) {
+                            ContentResolver contentResolver = getContentResolver();
+                            contentResolver.takePersistableUriPermission(thumbnailUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            thumbnailImageView.setImageURI(thumbnailUri);
+                        }
+                    }
+                }
+        );
+
+        selectDocumentLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        documentUri = result.getData().getData();
+                        if (documentUri != null) {
+                            ContentResolver contentResolver = getContentResolver();
+                            contentResolver.takePersistableUriPermission(documentUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            Toast.makeText(this, "Document Selected", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
 
         thumbnailImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,31 +120,17 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
     }
 
     private void selectImage() {
-        Intent intent = new Intent();
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Thumbnail"), 1);
+        selectImageLauncher.launch(intent);
     }
 
     private void selectDocument() {
-        Intent intent = new Intent();
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("application/pdf");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Document"), 2);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && data != null && data.getData() != null) {
-            if (requestCode == 1) {
-                thumbnailUri = data.getData();
-                thumbnailImageView.setImageURI(thumbnailUri);
-            } else if (requestCode == 2) {
-                documentUri = data.getData();
-                Toast.makeText(this, "Document Selected", Toast.LENGTH_SHORT).show();
-            }
-        }
+        selectDocumentLauncher.launch(intent);
     }
 
     private void uploadNewsArticle() {
@@ -118,8 +138,8 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
         String date = dateEditText.getYear() + "/" + (dateEditText.getMonth() + 1) + "/" + dateEditText.getDayOfMonth();
         String content = contentEditText.getText().toString();
 
-        if (title.isEmpty() || content.isEmpty() || thumbnailUri == null) {
-            Toast.makeText(this, "Please fill all fields and select a thumbnail.", Toast.LENGTH_SHORT).show();
+        if (title.isEmpty() || content.isEmpty() || thumbnailUri == null || documentUri == null) {
+            Toast.makeText(this, "Please fill all fields and select a thumbnail and a document.", Toast.LENGTH_SHORT).show();
             return;
         }
 
