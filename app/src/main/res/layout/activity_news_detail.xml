@@ -11,6 +11,14 @@
         android:padding="16dp">
 
         <!-- Title -->
+        <TextView
+            android:id="@+id/datetv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="01/01/2024"
+            android:textAlignment="textStart"
+            android:textColor="@color/dark_gray" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/newsTitleTextView"
             android:layout_width="match_parent"
@@ -42,19 +50,19 @@
             android:fontFamily="@font/cagliostro"
             android:text="This is some random content \n to khabar yane news kuch isa tarah se dikhegi screen pe jaise abhi dikh rahi he "
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <!-- WebView for document -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/viewDocumentBtn"
             android:layout_width="164dp"
-            android:layout_height="35dp"
+            android:layout_height="48dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/btn_selected_color"
             android:fontFamily="@font/source_sans_pro_italic"
             android:text="Open Document"
             android:textColor="@color/black"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:textStyle="italic"
             android:visibility="visible" />
 

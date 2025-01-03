@@ -205,6 +205,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Add news details as extras to the intent.
         intent.putExtra(NewsDetailActivity.EXTRA_NEWS_TITLE, selectedNews.getTitle());
+        intent.putExtra(NewsDetailActivity.EXTRA_NEWS_DATE, selectedNews.getDate());
         intent.putExtra(NewsDetailActivity.EXTRA_NEWS_DESCRIPTION, selectedNews.getContent());
         intent.putExtra(NewsDetailActivity.EXTRA_NEWS_IMAGE_URL, selectedNews.getThumbnailUrl());
         intent.putExtra(NewsDetailActivity.EXTRA_NEWS_ARTICLE_URL, selectedNews.getDocumentUrl());

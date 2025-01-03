@@ -16,11 +16,12 @@ import com.example.quizapp.R;
 
 public class NewsDetailActivity extends AppCompatActivity {
 
-    private TextView titleTextView, descriptionTextView;
+    private TextView titleTextView, descriptionTextView, dateTextView;
     private ImageView thumbnailImageView;
     private Button viewDocumentButton;;
 
     public static final String EXTRA_NEWS_TITLE = "newsTitle";
+    public static final String EXTRA_NEWS_DATE = "newsDate";
     public static final String EXTRA_NEWS_DESCRIPTION = "newsDescription";
     public static final String EXTRA_NEWS_IMAGE_URL = "newsImageUrl";
     public static final String EXTRA_NEWS_ARTICLE_URL = "newsArticleUrl";
@@ -36,15 +37,18 @@ public class NewsDetailActivity extends AppCompatActivity {
         descriptionTextView = findViewById(R.id.newsDescriptionTextView);
         thumbnailImageView = findViewById(R.id.newsThumbnailImageView);
         viewDocumentButton = findViewById(R.id.viewDocumentBtn);
+        dateTextView = findViewById(R.id.datetv);
 
         // Getting data from intent
-        String title = getIntent().getStringExtra("newsTitle");
-        String description = getIntent().getStringExtra("newsDescription");
-        String imageUrl = getIntent().getStringExtra("newsImageUrl");
-        String articleUrl = getIntent().getStringExtra("newsArticleUrl");
+        String title = getIntent().getStringExtra(EXTRA_NEWS_TITLE);
+        String date = getIntent().getStringExtra(EXTRA_NEWS_DATE);
+        String description = getIntent().getStringExtra(EXTRA_NEWS_DESCRIPTION);
+        String imageUrl = getIntent().getStringExtra(EXTRA_NEWS_IMAGE_URL);
+        String articleUrl = getIntent().getStringExtra(EXTRA_NEWS_ARTICLE_URL);
 
         // Setting data to views
         titleTextView.setText(title);
+        dateTextView.setText(date);
         descriptionTextView.setText(description);
 
         // Load thumbnail image using Glide
