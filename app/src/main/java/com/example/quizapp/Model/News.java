@@ -2,19 +2,30 @@ package com.example.quizapp.Model;
 
 public class News {
     private String title;
-    private String description;
-    private String imageUrl;
-    private String articleUrl;
+    private String content;
+    private String thumbnailUrl;
+    private String documentUrl;
+
+    private String date;
 
     // Default constructor required for calls to DataSnapshot.getValue(News.class)
     public News() {
     }
 
-    public News(String title, String description, String imageUrl, String articleUrl) {
+    public News(String content, String date , String documentUrl, String thumbnailUrl, String title) {
         this.title = title;
-        this.description = description;
-        this.imageUrl = imageUrl;
-        this.articleUrl = articleUrl;
+        this.content = content;
+        this.thumbnailUrl = thumbnailUrl;
+        this.documentUrl = documentUrl;
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getTitle() {
@@ -25,27 +36,27 @@ public class News {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getContent() {
+        return content;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 
-    public String getArticleUrl() {
-        return articleUrl;
+    public String getDocumentUrl() {
+        return documentUrl;
     }
 
-    public void setArticleUrl(String articleUrl) {
-        this.articleUrl = articleUrl;
+    public void setDocumentUrl(String documentUrl) {
+        this.documentUrl = documentUrl;
     }
 }
