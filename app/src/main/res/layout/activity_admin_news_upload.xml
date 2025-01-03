@@ -14,13 +14,30 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/bungee"
-            android:text="Upload News Article"
-            android:textColor="@color/black"
-            android:textSize="34sp" />
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:fontFamily="@font/bungee"
+                android:text="Upload News Article"
+                android:textColor="@color/black"
+                android:textSize="34sp" />
+
+            <ImageView
+                android:id="@+id/admin_logout"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/logout" />
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/titleEditText"
