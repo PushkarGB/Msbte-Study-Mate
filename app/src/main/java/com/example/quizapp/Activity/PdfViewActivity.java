@@ -19,6 +19,7 @@ public class PdfViewActivity extends AppCompatActivity {
     public static final String PDF_SUB_TITLE_EXTRA = "com.example.quizApp.PDF.Extra.SubTitle";
     public static final String PDF_RESOURCE_ID_EXTRA = "com.example.quizApp.PDF.Extra.ResourceID";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,11 @@ public class PdfViewActivity extends AppCompatActivity {
         TextView pdfTitle,pdfSubTitle;
         pdfTitle = findViewById(R.id.pdfTitle);
         pdfSubTitle = findViewById(R.id.pdfSubTitle);
+        ImageView backBtn = findViewById(R.id.PdfView_backImgBtn);
+
+        backBtn.setOnClickListener(v -> {
+            finish();
+        });
 
         int resourceID = pdfTitleImg.getResources().getIdentifier(resourceIDStr, "drawable", getPackageName());  //return 0 if no resource file found
 
