@@ -1,0 +1,61 @@
+The __________ package contains classes that help in connecting to a database, sending SQL statements to the database, and processing the query request. |
+connection.sql |db.sql |pkg.sql |java.sql |java.sql |
+Which of the following is not a type of JDBC driver? |100% pure Java Driver |JDBC - net pure Java Driver |JDBC - Native API driver |JDBC - Native pure Java Driver |JDBC - Native pure Java Driver |
+In JDBC __________ imports all Java classes that are concerned with Database connectivity. |javax.sql |java.mysql |java.sql |com.sql |java.sql |
+Database programming using Java throws which of the following exception? |SQLException |ClassNotFoundException |None of these |Both of these |Both of these |
+In the below statement, which type of query can be used with executeUpdate() method: statement.executeUpdate(query here)? |Insert, Update, Delete|Insert,Select, Delete |Only Select |Any Query |Insert, Update, Delete |
+What is the purpose of the next() method? |To retain the next element in a series. |To retain the next table. |To retain the next record in a series. |None of the above |To retain the next record in a series. |
+Native-protocol pure Java Driver converts _______ into the _______ directly. |JDBC calls, network protocol |ODBC class, network protocol |ODBC class, user calls |JDBC calls, user calls |JDBC calls, network protocol |
+Choose the correct syntax for getConnection() method. |public static Connection getConnection(String url, String password) throws SQLException |public static Connection getConnection(String name, String password) throws SQLException |public static Connection getConnection(String url, String name, String password) throws SQLException |public static Connection getConnection(String url, String name) throws SQLException |public static Connection getConnection(String url, String name, String password) throws SQLException |
+SQL stands for __________. |Structured Query Language |Sequential Query Language |Structured Question Language |Sequential Question Language |Structured Query Language |
+_____________ is a table of data that represents data from the table. |MetaData |ResultSetMetaData |ResultSet |Statement |ResultSet |
+Public class DriverManager extends __________. |Object |String |Connection |Statement |Object |
+Which of the following methods is supported by the Statement interface? |public boolean execute(String query) |public ResultSet executeQuery(String query)|public int executeUpdate(String query) |All of the above |All of the above |
+In the following statement, `rs` is an object of the __________ interface of the JDBC API: System.out.println(rs.getString(3)); |RowSet |Statement | Connection |ResultSet |ResultSet |
+Which is the main component of the JDBC API? |DriverManager |Driver |Connection |All of these |All of these |
+How many steps are used to connect any Java application with the database using JDBC? |5 |4 |3 |6 |5 |
+ODBC minimum SQL grammar contains ________. |Stored procedure |Data, Time, and Timestamp only |Create or drop View |Insert, update, delete only |Insert, update, delete only |
+Which class/interface is used for an SQL statement that is executed frequently? |Statement |CallableStatement |PreparedStatement |None of the above | PreparedStatement |
+What does the following code do: `smt = con.createStatement()`? |A PreparedStatement object is created to send SQL commands to the database. |A Statement object is created to send SQL commands to the database. |A CallableStatement is created to send SQL commands to the database. |A Statement object is created to execute parameterized SQL commands. |A Statement object is created to send SQL commands to the database. |
+Which kind of driver converts JDBC calls into calls on the Client API for Oracle, Sybase, Informix, IBM DB2, or other DBMS? |JDBC ODBC bridge + ODBC Driver |Native API partly–Java Driver |JDBC–Net pure Java Driver |Native Protocol Pure Java Driver |Native API partly–Java Driver |
+Which method executes an SQL statement that may return multiple results? |executeUpdate() |executeQuery() |execute() |noExecute() |execute() |
+Identify the correct syntax of executeQuery() of the Statement interface. |public static ResultSet executeQuery() |public ResultSet executeQuery(String q) | public void executeQuery(String q) |public int executeQuery(String q) |public ResultSet executeQuery(String q) |
+Native API converts ______ into the ______ used by DBMS. |JDBC API, Network Protocol |JDBC API, Native API calls |JDBC API, use calls |JDBC API, ODBC API calls |JDBC API, Native API calls |
+Which of the following function is used to find the column count of a particular ResultSet? |getMetadata() |metadata() |getColumnCount() |getCount() |getColumnCount() |
+The JDBC-ODBC bridge supports how many concurrent open statements per connection? |1 |0 |Does not support connection |None of these |1 |
+Select the correct method to create CallableStatement. |CallableStatement prepareCall(String sql) |CallableStatement prepareCall(String sql, int resultset_type, int resultset_concurrency) |CallableStatement prepareCall(String sql, int resultset_type, int resultset_concurrency, int resultset_holdability) |All of the above |All of the above |
+Microsoft Access data is stored in _______ file format. |.DAT |.MDB |.MSSQL |.OBJ |.MDB |
+Which of the following methods is used for sending SQL statements? |Statement |CallableStatement |PreparedStatement |Both B & C |Both B & C |
+DELETE statement of an SQL is executed by ________. |executeDelete() |executeUpdate() |executeQuery() |execute() |executeUpdate() |
+What does the method `getMetadata()` of a ResultSetMetaData object return? |Number of columns |Column types |Metadata about a ResultSet |None of these | Metadata about a ResultSet |
+Which JDBC driver type is the fastest? |Type 1 |Type 2 |Type 3 |Type 4 |Type 4 |
+Which JDBC driver uses the underlying OS system’s native API? |Type 1 |Type 2 |Type 3 |Type 4 |Type 2 |
+Which of the following is true about the `setAutoCommit(false)` method? |It allows executing multiple SQL statements as a transaction. |It commits changes automatically after each statement. |It is used to rollback changes after each statement. |It sets the database to read-only mode. |It allows executing multiple SQL statements as a transaction. |
+Which class is used to encapsulate an SQL statement? |CallableStatement |PreparedStatement |Statement |All of the above |PreparedStatement |
+The default isolation level in JDBC is ________. |TRANSACTION_NONE |TRANSACTION_READ_COMMITTED |TRANSACTION_SERIALIZABLE |TRANSACTION_REPEATABLE_READ | TRANSACTION_READ_COMMITTED |
+Which of the following methods is used to close a database connection? |closeConnection() |close() |terminate() |shutdown() |close() |
+What is the main purpose of the `commit()` method in a Connection object? |To save changes made during the transaction permanently. |To rollback the changes made during a transaction. |To establish a connection to the database. |To close the database connection. |To save changes made during the transaction permanently. |
+Which method of the ResultSet interface is used to get the value of a column? |getColumn() |getValue() |getColumnValue() |getString(), getInt(), etc. | getString(), getInt(), etc. |
+What does the `PreparedStatement` interface provide? |Direct execution of SQL queries. |Pre-compilation of SQL queries for reuse. |Execution of batch updates. |Both B & C |Both B & C |
+Which JDBC feature is used for batch processing? |CallableStatement |BatchUpdate |Statement |PreparedStatement |BatchUpdate |
+What is the return type of the `executeQuery()` method in the Statement interface? |void |int |ResultSet |boolean |ResultSet |
+Which JDBC method is used to roll back a transaction? |rollback() |undo() |restore() |commit(false) |rollback() |
+Which method is used to retrieve the auto-generated keys from an SQL insert? |getKeys() |getGeneratedKeys() |getAutoKeys() |fetchGeneratedKeys() |getGeneratedKeys() |
+Which method is used to establish a database connection using DriverManager? |connect() |openConnection() |getConnection() |initializeConnection() |getConnection() |
+Which method of the ResultSetMetaData interface returns the number of columns in a ResultSet? |getCount() |getColumnCount() |columnCount() |numberOfColumns() |getColumnCount() |
+What is the primary role of the DriverManager class in JDBC? |Manages drivers |Handles SQL exceptions |Executes SQL queries |Manages ResultSet |Manages drivers |
+The `setMaxRows(int max)` method of the Statement interface does what? |Limits the number of rows in a table. |Limits the rows returned by a query. |Sets the maximum size of a table. |None of the above. |Limits the rows returned by a query. |
+Which JDBC type represents a SQL Date? |java.sql.Time |java.sql.Date |java.sql.Timestamp |java.util.Date |java.sql.Date |
+Which method is used to set a parameter in a PreparedStatement? |setParameter() |setValue() |set() |setInt(), setString(), etc. |setInt(), setString(), etc. |
+The `next()` method of ResultSet does what? |Moves the cursor forward one row. |Moves the cursor to the last row. |Moves the cursor to the first row. |Moves the cursor to the previous row. |Moves the cursor forward one row. |
+Which JDBC driver type is also called the Thin driver? |Type 1 |Type 2 |Type 3 |Type 4 |Type 4 |
+What does the `executeUpdate()` method return? |The number of rows affected by the query. |A ResultSet object. |A boolean indicating success or failure. |Nothing (void). |The number of rows affected by the query. |
+What is the main use of the Statement interface in JDBC? |To prepare a statement for execution. |To execute static SQL statements. |To handle exceptions. |To manage database drivers. |To execute static SQL statements. |
+What is the purpose of the `getMetaData()` method in the Connection interface? |Retrieve database metadata. |Retrieve ResultSet metadata. |Retrieve table metadata. |Retrieve driver metadata. |Retrieve database metadata. |
+Which of the following is an advantage of PreparedStatement? |Faster execution due to pre-compilation. |Better security against SQL injection. |Supports batch execution of queries. |All of the above. |All of the above. |
+Which of the following methods retrieves database-specific information? |getMetaInfo() |getDatabaseMetaData() |getDataInfo() |getDbMetaData() |getDatabaseMetaData() |
+What is the difference between `execute()` and `executeUpdate()`? |`execute()` is for queries and updates; `executeUpdate()` is for updates only. |`execute()` is for updates only; `executeUpdate()` is for queries only. |Both are used for queries. |Both are used for updates. |`execute()` is for queries and updates; `executeUpdate()` is for updates only. |
+Which method is used to clear the parameters in a PreparedStatement? |clearParameters() |resetParameters() |clear() |reset() |clearParameters() |
+What is the purpose of the `isClosed()` method in Connection? |To check if the connection is valid. |To check if the connection is closed. |To close the connection. |To reopen a closed connection. |To check if the connection is closed. |
+Which method in JDBC is used to check if a ResultSet has more rows? |hasNextRow() |isLast() |isAfterLast() |next() |next() |
+The `setQueryTimeout()` method of the Statement interface does what? |Sets the maximum time to execute a query. |Cancels a query after a specific time. |Sets the timeout for ResultSet retrieval. |None of the above. |Sets the maximum time to execute a query. |

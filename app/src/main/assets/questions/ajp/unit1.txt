@@ -1,0 +1,59 @@
+AWT Means?|a) Abstract Windows Toolkit|b) Advanced Web Toolkit|c) Abstract Web Toolkit|d) Advanced Web Technology|a) Abstract Windows Toolkit
+Which is the immediate super class of Applet?|a) Container|b) Component|c) Frame|d) Panel|b) Component
+The setSize() method is defined by this class...|a) Applet|b) Component|c) Frame|d) Panel|b) Component
+Which class encapsulates a blank window upon which we can draw?|a) Applet|b) Canvas|c) Window|d) Frame|b) Canvas
+What are the variables defined in 'Dimension' class?|a) length and width|b) height and length|c) height and width|d) len and wid|c) height and width
+"If we want to hide the window, we can use this method..."|a) setVisible()|b) show()|c) setHidden()|d) view()|a) setVisible()
+Color class can create object of it using which of the following color values?|a) RGB|b) RYB|c) CMY|d) HSB|a) RGB
+The setColor() is the method of which class?|a) Applet|b) Graphics|c) Color|d) Object|b) Graphics
+Which of the following style is not supported by Font class?|a) Font.UNDERLINE|b) Font.ITALIC|c) Font.PLAIN|d) Font.BOLD|a) Font.UNDERLINE
+All the AWT controls are subclasses of which class?|a) Component|b) Container|c) AWTControl|d) Window|a) Component
+How you can remove all the controls from the applet?|a) Using remove()|b) Using removeAll()|c) Using removeAllControls()|d) It is not possible to remove all controls using a single method.|b) Using removeAll()
+Which of the following is passive AWT control?|a) Label|b) Button|c) Checkbox|d) TextField|a) Label
+Which alignment is not supported by Label?|a) Label.RIGHT|b) Label.LEFT|c) Label.CENTER|d) Label.BASELINE|d) Label.BASELINE
+How can we create Radio buttons?|a) Using ButtonGroup class|b) Using CheckboxGroup class|c) Using RadioButton class|d) Using Button class|b) Using CheckboxGroup class
+How to add the names in choice controls?|a) At the time of creation itself.|b) Using addName() method.|c) Using addItem() method.|d) Using add() method.|c) Using addItem() method.
+Multiple selections are allowed in...|a) Menu|b) CheckboxGroup|c) List|d) Choice|c) List
+How can we copy the �List�s contents into �Choice�s contents a) This is not possible.|a) This is not possible.|b) Using copyInto() method of List|c) Directly assigning List object to Choice object.|d) Using copyFrom() method.|a) This is not possible.
+What is default block-increment of Scrollbar?|a) 10|b) 5|c) 1|d) We cannot use block increment in scrollbars.|a) 10
+The immediate super class of TextArea is...|a) TextField|b) TextBox|c) TextComponent|d) Component|c) TextComponent
+Is it possible to change display character of TextField? How?|a) Not possible.|"b) Yes, by using setChar() method."|"c) Yes, by using setEchoChar() method."|"d) Yes, by using setDisplayChar() method."|"c) Yes, by using setEchoChar() method."
+Is it possible to center the text typed in TextField? How?|a) Not possible.|"b) Yes, by using setAlignment() method."|"c) Yes, by using setPosition() method."|"d) Yes, by putting values in the constructor itself."|a) Not possible.
+Which method is used to append the text at the end of TextArea?|a) append()|b) add()|c) appendAt()|d) addAt()|a) append()
+FlowLayout does not support this value of alignment...|a) FlowLayout.LEFT|b) FlowLayout.CENTER|c) FlowLayout.RIGHT|d) FlowLayout.BASELINE|d) FlowLayout.BASELINE
+The setLayout() is the method of which class?|a) Applet|b) Layout|c) FlowLayout|d) Graphics|a) Applet
+BorderLayout does not support this value of alignment...|a) BorderLayout.WEST|b) BorderLayout.EAST|c) BorderLayout.NORTH|d) BorderLayout.MIDDLE|d) BorderLayout.MIDDLE
+The correct constructor of Insets() which uses the values is...|"a) Insets(int top, int left, int bottom, int right)"|"b) Insets(int bottom, int right, int top, int left)"|"c) Insets(int right, int top, int left, int bottom)"|"d) Insets(Dimension d1, Dimension d2)"|"a) Insets(int top, int left, int bottom, int right)"
+The various controls supported by AWT are|"a. Labels, push buttonss"|"b. Checkboxes, choice, list"|"c. Scroll bars, text area, text field"|d. All of these|d. All of these
+The concept of the menu bar canbe implemented by using three java classes�|a. MenuBar|b. Menu|c. MenuItem|d. All of these|d. All of these
+The constructor which the Text Event class defines.|"a. TextEvent(Object source, int event_type)"|"b. textevent (Object source, int event_type)"|"c. textevent (object Source, float event_type)"|"d. textevent (Object source, string event_type)"|"a. TextEvent(Object source, int event_type)"
+In Java an event is an _______which specifies the change of state in the source.|a. Class|b. Object|c. Int|d. String|b. Object
+The name of the event classes are|"a. ActionEvent, ComponentEvent"|"b. ContainerEvent, FocusEvent"|"c. ItemEvent, KeyEvent"|d. All of these|d. All of these
+The classes and interfaces defined in AWT are contained within the ______ package.|a. java.awt.*|b. java.sql.*|c. java.io.*|d. java.int*|a. java.awt.*
+Java packages such as ________________ support the Event handling mechanism.|a. java.util|b. java.awt|c. java.awt.event|d. All of these|d. All of these
+The general form to set a specific type of layout manager is|a. void setLayout(LayoutManager lm)|b. Void setLayout(LayoutManager lm)|c. void setLayout(layoutManager lm)|d. Void setLayout(Layoutmanager lm)|a. void setLayout(LayoutManager lm)
+Some of the event listener interfaces are_____________|"a. ActionListener, ComponentListener"|"b. ContainerListener, FocusListener"|"c. ItemListener, KeyListener"|d. All of these|d. All of these
+The AWT container is an instance of the ___________ class which holds various components and other containers|a. Graphics|b. Container|c. Eventobj|d. None of these|b. Container
+A checkbox is a control that consists of a|a. Combination of a small box|b. A label|c. Combination of a large box and a label|d. Both a & b|d. Both a & b
+Java applets are used to create _______________ applications|a. Graphical|b. User interactive|c. Both a & b|d. None of these|c. Both a & b
+"In Java, events are all the activities that occur between"|a. The user|b. The applications|c. Both a & b|d. None of these|c. Both a & b
+The most commonly used layout managers are|a. FlowLayout|b. BorderLayout|c. GridLayout|d. All of these|d. All of these
+"Positions the components into five regions:east, west, north, south, center"|a. BorderLayout|b. CardLayout|c. GridLayout|d. FlowLayout|a. BorderLayout
+Arranges the components as a deck of cards such that only one component is visible at a time|a. BorderLayout|b. CardLayout|c. GridLayout|d. FlowLayout|b. CardLayout
+Arranges the components horizontally|a. BorderLayout|b. CardLayout|c. GridLayout|d. FlowLayout|d. FlowLayout
+Arranges the componemnts into grid|a. BorderLayout|b. CardLayout|c. GridLayout|d. FlowLayout|c. GridLayout
+__________ creates a dropdown list of textual entries|a. Choice|b. Checkbox|c. Textbox|d. TextComponent|a. Choice
+The Component class and MenuComponent class are the ___________ which|a. Subclasses|b. Superclasses|c. Both a & b|d. None of these|b. Superclasses
+The Component class is an abstract class and so its ____________ are used to create components.|a. Subclasses|b. Superclasses|c. Both a & b|d. None of these|a. Subclasses
+The AWT classes can be roughly categorized into the following groups: a. GUI Components|a. GUI Components|b. Layouts|c. Graphics Tools|e. All of these|e. All of these
+Panel is used for __________ components|a. Grouping|b. Managing|c. Deleting|d. Modifying|a. Grouping
+An Applet is a ________ of Panel:|a. Subclass|b. Superclass|c. Both a & b|d. None of these|a. Subclass
+Window is used for ____________ windows|a. Creating|b. Handling|c. Modifying|d. Both a & b|d. Both a & b
+The subclasses of Window are|a. Dialog|b. Frame|c. Both a & b|d. None of these|c. Both a & b
+The CardLayout class defines the following constructors:|"a. CardLayout() // First Cardlayout(int hor, int ver) //second"|"b. Cardlayout() // First CardLayout(int hour, int ver)"|"c. CardLayout() // First Cardlayout(int hor, int var)"|"d. CardLayout() // First Cardlayout(int hour, int ver)"|"a. CardLayout() // First Cardlayout(int hor, int ver) //second"
+A menu bar represents|a. A list of menus which can be added to the top of a top-level window|b. A list of menus which can be deleted to the top of a top-level window|c. A list of menus which can be added to the bottom of a bottom-level window|d. None of these|a. A list of menus which can be added to the top of a top-level window
+Each menu is associated with a _________ list of menu items:|a. Checkbox|b. Drop-down|c. Choice|d. None of these|b. Drop-down
+The two types of menus which are given as follows:|a. Pop-up menus|b. Regular menus|c. Both a & b|d. None of these|c. Both a & b
+Regular menus are placed at the __________ of the application window within a|a. Top|b. Bottom|c. Top-down|d. Botttom-up|a. Top
+The __________ interface is used to handle the menu events|a. ContainerListener|b. FocusListener|c. ActionListener|d. WindowListener|c. ActionListener
+The text field and text area controls create a _________________ area respectively|a. Single-line text|b. Multi-line text|c. Both a & b|d. None of these|c. Both a & b
