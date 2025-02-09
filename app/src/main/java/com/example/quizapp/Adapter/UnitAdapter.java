@@ -88,11 +88,11 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.viewholder> {
             public void onClick(View v) {
                 if (course.equals("ajp") || course.equals("est")) {
                     Intent intent = new Intent(context, QuizActivity.class);
-                    intent.putExtra("course", course);
-                    intent.putExtra("unitId", unitsList.get(position).getUnitNo());
-                    intent.putExtra("unitName", unitsList.get(position).getUnitName());
-                    intent.putExtra("weight", weightStr);
-                    intent.putExtra("courseImgResource", drawableResourceId);
+                    intent.putExtra(QuizActivity.EXTRA_COURSE, course);
+                    intent.putExtra(QuizActivity.EXTRA_UNIT_ID, unitsList.get(position).getUnitNo());
+                    intent.putExtra(QuizActivity.EXTRA_UNIT_NAME, unitsList.get(position).getUnitName());
+                    intent.putExtra(QuizActivity.EXTRA_WEIGHT, weightStr);
+                    intent.putExtra(QuizActivity.EXTRA_COURSE_IMG_RESOURCE, drawableResourceId);
                     context.startActivity(intent);
                 }
                 else {

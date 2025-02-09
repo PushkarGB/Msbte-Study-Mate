@@ -20,15 +20,22 @@ public class QuizActivity extends AppCompatActivity {
     private boolean doubleTap  = false;
     String course,unit;
 
+    public static final String EXTRA_COURSE = "course";
+    public static final String EXTRA_UNIT_ID = "unitId";
+    public static final String EXTRA_UNIT_NAME = "unitName";
+    public static final String EXTRA_WEIGHT = "weight";
+    public static final String EXTRA_COURSE_IMG_RESOURCE = "courseImgResource";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        course = getIntent().getStringExtra("course");
-        unit = getIntent().getStringExtra("unitId");
-        String weightStr = getIntent().getStringExtra("weight");
-        String unitName = getIntent().getStringExtra("unitName");
-        int resourceId = getIntent().getIntExtra("courseImgResource", R.drawable.ajp);
+        course = getIntent().getStringExtra(EXTRA_COURSE);
+        unit = getIntent().getStringExtra(EXTRA_UNIT_ID);
+        String weightStr = getIntent().getStringExtra(EXTRA_WEIGHT);
+        String unitName = getIntent().getStringExtra(EXTRA_UNIT_NAME);
+        int resourceId = getIntent().getIntExtra(EXTRA_COURSE_IMG_RESOURCE, R.drawable.ajp);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new QuizFragment(course, unit)).commit();
 

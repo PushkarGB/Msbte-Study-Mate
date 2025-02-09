@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
+    tools:context=".Activity.ResultFragement"
     android:background="@drawable/gradient_bg"
-    tools:context=".Activity.ResultFragement">
+    android:layout_width="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/lottieAnimationView"
@@ -220,7 +229,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/resButton"
+        android:id="@+id/exitButton"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
@@ -235,4 +244,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/restartButton" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/solutionButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/btn_selected_color"
+        android:gravity="center"
+        android:text="Solution"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:fontFamily="@font/source_sans_pro_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exitButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout></LinearLayout>
+    </ScrollView>

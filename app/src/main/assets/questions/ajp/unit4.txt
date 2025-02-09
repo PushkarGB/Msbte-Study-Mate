@@ -1,0 +1,53 @@
+1. UDP stands for | User Data Port | User Datagram Protocol | Used Data Provider | User Data Protocol | User Datagram Protocol
+2. Name the class which is used to create a port where the server will listen | Server | Socket | ServerSocket | SocketServer | ServerSocket
+3. Communication using TCP protocol is | Connectionless, Iterative | Collectionless, Concurrent | Connection-oriented, Iterative | Connection-oriented, Concurrent | Connection-oriented, Concurrent
+4. Which of these is not a factory method of InetAddress class? | getLocalHost() | getByName(String hostname) | getAllName(String hostname) | getAllByName(String hostname) | getAllName(String hostname)
+5. Which from the below use "Middle tier"? | 3 tier | 4 tier | n-tier | All of the above | All of the above
+6. **IPv6 uses | 4 groups of 8 bits each | 4 groups of 8 hexadecimal digits | 8 groups of 4 digits each | 8 groups of
+7. Select the full form of DNS | Data Network System | Domain Name System | Domain Name Server | Domain Naming Service | Domain Name System
+8. What is the use of the writeUTF() method? | Writes a string into the underlying output stream | Reads a string from the underlying input stream | Writes a byte array into the underlying output stream | Writes a character array into the underlying output stream | Writes a string into the underlying output stream
+9. Which of these is a bundle of information passed between machines? | MIME | Cache | Datagram | Socket | Datagram
+10. Port number for FTP is | 21 | 23 | 25 | 80 | 21
+11. The class which encapsulates both the numerical IP address and the domain name for that address is | DatagramPacket | DatagramSocket | InetAddress | ServerSocket | InetAddress
+12. int getServerPort() method | Returns the port number on which this request was received | Returns the port name on which the request was received | Returns the server number on which this request was received | Returns the port number on which this response/request was received | Returns the port number on which this response/request was received
+13. In this constructor ServerSocket(int port, int max_queue) what is the default value for max_queue? | 100 | 50 | 75 | 80 | 50
+14. The constructor of URL can throw an exception called | MalformedURLException | UrlNotFoundException | UrlException | UrlSourceNotFoundException | MalformedURLException
+15. Which IP address is multicast IP address? | 192.168.2.32 | 235.55.45.2 | 12.22.1.2 | None of these | 235.55.45.2
+16. Which 5 parameters uniquely identify a connection? | Local IP, Remote IP, Local MAC, Remote MAC, Protocol | Local IP, Local PORT, Remote MAC, Remote PORT, Protocol | Local MAC, Local PORT, Remote MAC, Remote PORT, Protocol | Local IP, Local PORT, Remote IP, Remote PORT, Protocol | Local IP, Local PORT, Remote IP, Remote PORT, Protocol
+17. Select the method used to create a URL connection | URL Connection | openConnection | URL | URLDecoder | openConnection
+18. What value is returned by the readLine() method when it reaches the end of the file? | EOF | null | 0 | END | null
+19. The class used to create a TCP server is | Server | SocketServer | ServerSocket | Socket | ServerSocket
+20. Which method of ServerSocket will wait for a client to initiate communication and then communicate with the client? | wait() | connect() | accept() | waitForConnect() | accept()
+21. Method to retrieve file name specified in URL | getFile() | getUrl() | getFileUrl() | getLocalFile() | getFile()
+22. Necessary components to implement Datagram | DatagramPacket | DatagramSocket | Both A & B | None of A & B | Both A & B
+23. Syntax for getLocalHost() method | InetAddress getLocalHost() throws UnknownHostException | IpAddress getLocalHost() throws UnknownHostException | String getLocalHost() throws UnknownHostException | void getLocalHost() throws UnknownHostException | InetAddress getLocalHost() throws UnknownHostException
+24. Method of DatagramPacket class to find destination address | findAddress() | getAddress() | address() | whoIs() | getAddress()
+25. Connection-oriented communication is possible using | Socket and ServerSocket | DatagramSocket and DatagramPacket | Both of these | None of these | Socket and ServerSocket
+26. A server socket can connect to | 1 client | 2 clients | 10 clients | Multiple clients | Multiple clients
+27. Resolver in DNS system maps | Domain name to IP address | IP address to domain name | Domain name to MAC address | MAC address to IP address | Domain name to IP address
+28. If a program consists of three classes, then after compilation how many class files will be created? | One | Three | Uncountable | Zero | Three
+29. Which of the following is not a method of the Security class? | socketPermission() | filePermission() | dataPermission() | None of the above | dataPermission()
+30. TCP does not support multicasting and broadcasting because | It supports full-duplex communication | It provides error control | It provides flow control | It is a connection-oriented protocol | It is a connection-oriented protocol
+31. Which of the following is true about TCP protocol? | Is reliable and connection-oriented | Is unreliable but connection-oriented | Is reliable and connectionless | None of these | Is reliable and connection-oriented
+32. Which class defines the following methods: int getContentLength(), long getDate(), long getExpiration()? | URLConnection | Datagram | Client | None of these | URLConnection
+33. Name the class used to create a port where the server will listen | Server | Socket | ServerSocket | SocketServer | ServerSocket
+34. Class Permission in the java.security package is | Static | Abstract | Final | None of these | Abstract
+35. Which methods are commonly used in ServerSocket class? | getOutputStream() | accept() | close() | None of the above | accept()
+36. Proper method to retrieve the hostname of the local machine? | getLocalHost() | getByName(String hostname) | getAllByName(String hostname) | getHostAddress() | getLocalHost()
+37. Which constructor of DatagramPacket class is used for receiving purposes? | DatagramPacket(byte[], int size) | DatagramPacket(byte[], int size, InetAddress ip, int port) | DatagramPacket(byte[], int offset, int size, InetAddress ip, int port) | All of these | All of these
+38. The method used to retrieve file name specified in URL is | getFile() | getUrl() | getFileUrl() | getLocalFile() | getFile()
+39. Connection-oriented communication is possible using which classes of Java? | Socket and ServerSocket | DatagramSocket and DatagramPacket | Both of these | None of these | Socket and ServerSocket
+40. Which IP address is an example of a multicast IP address? | 192.168.1.1 | 235.55.45.2 | 10.0.0.1 | None of these | 235.55.45.2
+41. What is the use of setEchoChar() method? | to set echo in symbol form | to set char in symbol form | Both A & B | to create password in symbol form | to create password in symbol form
+42. Which method returns the currently selected item in Choice? | getSelectedItem() | getSelectedElement() | getSelectedIndex() | getItem() | getSelectedItem()
+43. Which statement with respect to inner class is true? | It is a way of logically grouping classes that are only used in one place | It increases encapsulation | It can lead to more readable and maintainable code | All A, B, and C are true | All A, B, and C are true
+44. The default layout of Applet is | GridLayout | CardLayout | FlowLayout | BorderLayout | FlowLayout
+45. Java Applets are used to create | Graphical | user interactive | Both A & B | None of these | Both A & B
+46. Which is the correct constructor of GridLayout? | GridLayout(int a) | GridLayout(int num_rows, int num_columns) | GridLayout(int rows, int cols, int vert) | GridLayout(int hor) | GridLayout(int num_rows, int num_columns)
+47. The correct hierarchy for Panel is | Component – Container – Window – Panel | Component – Container – Applet – Panel | Component – Container – Panel | Container – Component – Panel | Component – Container – Panel
+48. Which method is used to set password character for a TextField? | setPasswordCharacter() | setEchoChar() | setPassChar() | setEchoCharacter() | setEchoChar()
+49. To set the title to the Frame window, which method is used? | void setTitle(String str) | void setText(String str) | void settitle(String str) | None of the above | void setTitle(String str)
+50. Which package is used for Graphical User Interface? | java.applet | java.awt | java.awt.image | java.io | java.awt
+51. What does the following line of code do? TextField tf = new TextField(10); | will set 10 to TextField as its initial text | Will set the character capacity to 10 | Both A & B | None of These | Will set the character capacity to 10
+52. Which method is used to count the number of items in the List? | getItem() | getSelectedItem() | getItemCount() | getCount() | getItemCount()
+53. Which Text Component method is used to set a TextComponent to the read-only state? | Editable |
