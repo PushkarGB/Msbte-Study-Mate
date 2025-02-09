@@ -258,25 +258,25 @@ public class QuizFragment extends Fragment {
     private void loadQuestions(@NonNull String subject, @NonNull String chapter) {
         //load questions based on subject and chapter
         questions = new ArrayList<>();
-        String fileName = "questions/" + subject.toLowerCase() + "/" + chapter.toLowerCase() + ".csv";
+        String fileName = "questions/" + subject.toLowerCase() + "/" + chapter.toLowerCase() + ".txt";
 
-        //questions/ajp/unit1.csv
-        //reading the CSV file
+        //questions/ajp/unit1.txt
+        //reading the txt file
         try (InputStream in = getContext().getAssets().open(fileName);
              BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
 
-            //Reading Each Line of the CSV File
+            //Reading Each Line of the file
 
             String line;
             while ((line = reader.readLine()) != null) {
 
-                //Parsing Each line of the CSV File
+                //Parsing Each line of the file
 
-                String[] parts = line.split(",");
-                if (parts.length == 6) { // Assuming there are 6 columns in the CSV file (question, option1, option2, option3, option4, answer)
+                String[] parts = line.split("\\|");
+                if (parts.length == 6) { // Assuming there are 6 columns in the file (question, option1, option2, option3, option4, answer)
 
                     //Creating a new Question object and adding it to the list
-                    questions.add(new Question(parts[0], parts[5], new String[]{parts[1], parts[2], parts[3], parts[4]}));
+                    questions.add(new Question(parts[0], parts[5].trim(), new String[]{parts[1].trim(), parts[2].trim(), parts[3].trim(), parts[4].trim()}));
                     // Assuming  constructor Question(String question, String answer, String[] options)
 
                 }
