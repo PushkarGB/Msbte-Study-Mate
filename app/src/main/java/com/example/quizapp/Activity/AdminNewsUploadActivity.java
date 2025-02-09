@@ -1,8 +1,10 @@
 package com.example.quizapp.Activity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -24,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.quizapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -36,7 +41,7 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
 
     private EditText titleEditText, contentEditText;
     private DatePicker dateEditText;
-    private ImageView thumbnailImageView;
+    private ImageView thumbnailImageView , logoutIv;
     private Button uploadButton, selectDocumentButton;
 
     private Uri thumbnailUri, documentUri;
@@ -62,6 +67,7 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
         thumbnailImageView = findViewById(R.id.thumbnailImageView);
         uploadButton = findViewById(R.id.uploadButton);
         selectDocumentButton = findViewById(R.id.selectDocumentButton);
+        logoutIv = findViewById(R.id.admin_logout);
 
         newsDatabaseRef = FirebaseDatabase.getInstance().getReference("News");
         storageReference = FirebaseStorage.getInstance().getReference("NewsUploads");
@@ -71,13 +77,16 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
         // Initialize ActivityResultLaunchers
         selectImageLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        thumbnailUri = result.getData().getData();
-                        if (thumbnailUri != null) {
-                            ContentResolver contentResolver = getContentResolver();
-                            contentResolver.takePersistableUriPermission(thumbnailUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                            thumbnailImageView.setImageURI(thumbnailUri);
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                            thumbnailUri = result.getData().getData();
+                            if (thumbnailUri != null) {
+                                ContentResolver contentResolver = AdminNewsUploadActivity.this.getContentResolver();
+                                contentResolver.takePersistableUriPermission(thumbnailUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                thumbnailImageView.setImageURI(thumbnailUri);
+                            }
                         }
                     }
                 }
@@ -85,13 +94,16 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
 
         selectDocumentLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        documentUri = result.getData().getData();
-                        if (documentUri != null) {
-                            ContentResolver contentResolver = getContentResolver();
-                            contentResolver.takePersistableUriPermission(documentUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                            Toast.makeText(this, "Document Selected", Toast.LENGTH_SHORT).show();
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                            documentUri = result.getData().getData();
+                            if (documentUri != null) {
+                                ContentResolver contentResolver = AdminNewsUploadActivity.this.getContentResolver();
+                                contentResolver.takePersistableUriPermission(documentUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                Toast.makeText(AdminNewsUploadActivity.this, "Document Selected", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 }
@@ -117,6 +129,34 @@ public class AdminNewsUploadActivity extends AppCompatActivity {
                 uploadNewsArticle();
             }
         });
+
+        logoutIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                admin_logout(v);
+            }
+        });
+    }
+
+    private void admin_logout(View v) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Logout?");
+        alert.setMessage("Are You Sure ?");
+        alert.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        alert.setNegativeButton("Logout", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(AdminNewsUploadActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }).create().show();
     }
 
     private void selectImage() {

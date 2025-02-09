@@ -1,25 +1,22 @@
 package com.example.quizapp.Activity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.quizapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +24,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,7 +35,9 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth auth;
 
     Boolean doubleTap = false;
-    android.app.ProgressDialog progressDialog;
+    ProgressDialog progressDialog;
+
+    private static final String TAG = "LoginActivity";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        progressDialog = new android.app.ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Bhai aa raha hoon,\n nikal gaya bas");
         progressDialog.setCancelable(false); //if its true user will see a cancel buttion
 
@@ -120,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this, "Password Need to have More than 6 characters", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    progressDialog.show();
                     //If all fields are correct sign in
                     auth.signInWithEmailAndPassword(Email, Pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
@@ -134,21 +135,45 @@ public class LoginActivity extends AppCompatActivity {
 
                             //If Login was successful then
                             if (task.isSuccessful()) {
-                                progressDialog.show();
-                                try {
-                                    /*Intent is used to move from one activity to another */
-
-                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                    /* finish krne se user jab HomeActivity se back krega to wapis login pe nai ayega
-                                rather he will exit the app */
-                                } catch (Exception e) {
-                                    /* to handle if there is a error with mainActivity.class activity not opening
-                                    toast is to show popup message */
-                                    Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                FirebaseUser user = auth.getCurrentUser();
+                                if (user != null) {
+                                    user.getIdToken(true)
+                                            .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
+                                                public void onComplete(@NonNull Task<GetTokenResult> task) {
+                                                    if (task.isSuccessful()) {
+                                                        GetTokenResult result = task.getResult();
+                                                        if (result != null && result.getClaims() != null) {
+                                                            Boolean isAdmin = (Boolean) result.getClaims().get("admin");
+                                                            if (isAdmin != null && isAdmin) {
+                                                                // User is an admin, go to AdminActivity
+                                                                Log.d(TAG, "User is an admin");
+                                                                Intent intent = new Intent(LoginActivity.this, AdminNewsUploadActivity.class);
+                                                                startActivity(intent);
+                                                            } else {
+                                                                // User is not an admin, go to HomeActivity
+                                                                Log.d(TAG, "User is not an admin");
+                                                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                                                startActivity(intent);
+                                                            }
+                                                            finish();
+                                                        } else {
+                                                            progressDialog.dismiss();
+                                                            Log.e(TAG, "Claims are null");
+                                                            Toast.makeText(LoginActivity.this, "Failed to get user claims.", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    } else {
+                                                        progressDialog.dismiss();
+                                                        Log.e(TAG, "Failed to get token", task.getException());
+                                                        Toast.makeText(LoginActivity.this, "Failed to get user token.", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(LoginActivity.this, "User not found", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
+                                progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -157,5 +182,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 }
